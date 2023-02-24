@@ -14,9 +14,15 @@ public:
     ~Window();
     bool ShouldClose();
     GLFWwindow *GetGLFWWindow();
-
-private:
     void processInput();
+    void update();
+    Camera getCamera();
+       int getWidth() const { return width; }
+    void setWidth(int width_) { width = width_; }
+    int getHeight() const { return height; }
+    void setHeight(int height_) { height = height_; }
+private:
+private:
     void initWindow(unsigned int width, unsigned int height, const char *title);
     void setCallbacks();
     void mouseCallback(GLFWwindow *window, double xpos, double ypos);
@@ -35,6 +41,9 @@ private:
     // timing
     float deltaTime = 0.0f;
     float lastFrame = 0.0f;
+
+        int height;
+    int width;
 };
 
 #endif

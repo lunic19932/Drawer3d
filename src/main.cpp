@@ -1,13 +1,9 @@
 #include <iostream>
-#include "Drawer3D/Window.h"
-#include "learnopengl/camera.h"
+#include "Drawer3D/DrawerSim.h"
 int main(int argc, char const *argv[])
 {
-    Window window(500, 500, "Drawer");
-    std::cout << "Test" << std::endl;
-    while (!window.ShouldClose())
-    {
-        glfwPollEvents();
-    }
+    DrawerSim sim;
+
+    sim.run();
     return 0;
 }

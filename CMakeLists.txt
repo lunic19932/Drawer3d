@@ -80,10 +80,10 @@ function(create_project_from_sources)
 	file(GLOB SOURCE
             "src/*.h"
             "src/*.cpp"
-            "src/*.vs"
-            "src/*.fs"
-            "src/*.gs"
-            "src/*.cs"
+            "src/Shader/*.vs"
+            "src/Shader/*.fs"
+            "src/Shader/*.gs"
+            "src/Shader/*.cs"
     )
 
     add_executable(Drawer3D ${SOURCE})
@@ -104,10 +104,10 @@ function(create_project_from_sources)
     endif(WIN32)
     # copy shader files to build directory
     file(GLOB SHADERS
-             "src/*.vs"
-             "src/*.fs"
-             "src/*.gs"
-	     "src/*.cs"
+             "src/Shader/*.vs"
+             "src/Shader/*.fs"
+             "src/Shader/*.gs"
+	     "src/Shader/*.cs"
     )
 	# copy dlls
 	file(GLOB DLLS "dlls/*.dll")

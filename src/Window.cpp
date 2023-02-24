@@ -1,6 +1,6 @@
 #include "Drawer3D/Window.h"
 Camera Window::camera;
-Window::Window(unsigned int width, unsigned int height, const char *title)
+Window::Window(unsigned int width, unsigned int height, const char *title):height(height),width(width)
 {
     initWindow(width, height, title);
     setCallbacks();
@@ -21,7 +21,6 @@ Window::Window(unsigned int width, unsigned int height, const char *title)
     // configure global opengl state
     // -----------------------------
     glEnable(GL_DEPTH_TEST);
-
 }
 
 Window::~Window()
@@ -41,7 +40,7 @@ GLFWwindow *Window::GetGLFWWindow()
 
 void Window::processInput()
 {
-      if (glfwGetKey(m_Window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+    if (glfwGetKey(m_Window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(m_Window, true);
 
     if (glfwGetKey(m_Window, GLFW_KEY_W) == GLFW_PRESS)
@@ -52,6 +51,16 @@ void Window::processInput()
         camera.ProcessKeyboard(LEFT, deltaTime);
     if (glfwGetKey(m_Window, GLFW_KEY_D) == GLFW_PRESS)
         camera.ProcessKeyboard(RIGHT, deltaTime);
+}
+void Window::update()
+{
+    glfwSwapBuffers(m_Window);
+    glfwPollEvents();
+}
+
+Camera Window::getCamera()
+{
+    return camera;
 }
 void Window::initWindow(unsigned int width, unsigned int height, const char *title)
 {
